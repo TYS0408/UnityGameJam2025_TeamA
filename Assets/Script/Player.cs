@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public Sprite spriteNormal;     //プレイヤー通常スプライト
     public Sprite spriteDown;       //プレイヤー下降スプライト
@@ -32,6 +32,10 @@ public class NewBehaviourScript : MonoBehaviour
             //プレイハブから球を生成。
             shotList.Add(Instantiate(shotPrefab));
             shotList[i].transform.position = hidePos;
+
+            //リジットボディの加速度を指定。
+            Rigidbody2D rb = shotList[i].GetComponent<Rigidbody2D>();
+            rb.velocity = transform.right * shotSpeed;
         }
     }
 
@@ -110,11 +114,11 @@ public class NewBehaviourScript : MonoBehaviour
             }
 
            
-            //弾移動
-            for(int i = 0; i< maxShotCount; i++)
-            {
-                shotList[i].transform.position += transform.right * shotSpeed * Time.fixedDeltaTime;
-            }
+            ////弾移動
+            //for(int i = 0; i< maxShotCount; i++)
+            //{
+            //    shotList[i].transform.position += transform.right * shotSpeed * Time.fixedDeltaTime;
+            //}
 
         }
     }
