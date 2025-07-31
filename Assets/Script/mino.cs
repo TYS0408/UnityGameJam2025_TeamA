@@ -14,6 +14,11 @@ public class NewBehaviourScript : MonoBehaviour
     List<GameObject> shotList;      //弾キャッシュ（事前に作成する弾)
     int nextShotIndex = 0;          //次に発射する弾キャッシュの位置。
 
+    public GameObject shotFlash;    //発射効果のフラッシュエフェクト
+    const int FLASH_VIEW_FRAME = 4; //発射効果の表示フレーム数
+    public int shotPerSec = 8;      //1秒間に発射する弾数
+    int shotFrame;                  //前の球を発射してからの経過フレーム。 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,8 +78,27 @@ public class NewBehaviourScript : MonoBehaviour
                     spriteRenderer.sprite = spriteUp;
                 }
             }
+
+            //一秒間に発車する段数に応じて「次の球を発射するまでのフレーム数」計算。
+            int shotInterval = 50 / shotPerSec;
+
+            //弾発射。
+            shotFrame++;
+            if (shotFrame >= shotInterval)
+            {
+                //次の球大気を開始するための経過時間を初期化。
+                shotFrame = 0;
+                //弾の発射効果を表示。
+                shotFlash.SetActive(true);
+            }
+            else if( shotFrame >= FLASH_VIEW_FRAME)
+            {
+                //発射効果の継続時間が過ぎたら発射効果を非表示。
+                shotFlash.SetActive(false);
+            }
+
             //弾をプレイヤー位置に移動。
-            shotList[nextShotIndex].transform.position = transform.position;
+             shotList[nextShotIndex].transform.position = transform.position;
             //次の球位置
             nextShotIndex++;
             if(nextShotIndex >= maxShotCount)
