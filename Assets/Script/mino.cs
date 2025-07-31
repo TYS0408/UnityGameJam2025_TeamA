@@ -86,10 +86,22 @@ public class NewBehaviourScript : MonoBehaviour
             shotFrame++;
             if (shotFrame >= shotInterval)
             {
-                //次の球大気を開始するための経過時間を初期化。
+                //次の球待機を開始するための経過時間を初期化。
                 shotFrame = 0;
+
+                //弾をプレイヤー位置に移動。
+                shotList[nextShotIndex].transform.position = transform.position;
+                //次の球位置
+                nextShotIndex++;
+                if (nextShotIndex >= maxShotCount)
+                {
+                    nextShotIndex = 0;
+                }
+
+
                 //弾の発射効果を表示。
                 shotFlash.SetActive(true);
+
             }
             else if( shotFrame >= FLASH_VIEW_FRAME)
             {
@@ -97,14 +109,7 @@ public class NewBehaviourScript : MonoBehaviour
                 shotFlash.SetActive(false);
             }
 
-            //弾をプレイヤー位置に移動。
-             shotList[nextShotIndex].transform.position = transform.position;
-            //次の球位置
-            nextShotIndex++;
-            if(nextShotIndex >= maxShotCount)
-            {
-                nextShotIndex = 0;
-            }
+           
             //弾移動
             for(int i = 0; i< maxShotCount; i++)
             {
