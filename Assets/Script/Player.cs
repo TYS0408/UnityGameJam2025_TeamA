@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Sprite spriteNomal;  //プレイヤーの通常スプライト
+    public Sprite spriteDown;   //プレイヤーの下降スプライト
+    public Sprite spriteUp;     //プレイヤーの上昇スプライト
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,5 +39,28 @@ public class Player : MonoBehaviour
             //徐々にマウス座標に近づくよう、移動量を分割して加算
             transform.position += moveVec;
         }
+
+        //上下の移動量に応じてスプライトを切り替え。
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (Mathf.Abs(moveVec.y) < 0.05f)
+        {
+            //縦の移動量が0.05未満なら通常スプライト。
+            spriteRenderer.sprite = spriteNomal;
+        }
+        else
+        {
+            if (moveVec.y < 0)
+            {
+                //縦の移動量がマイナスなら下降スプライト。
+                spriteRenderer.sprite = spriteDown;
+            }
+            else
+            {
+                //縦の移動量がプラスなら上昇スプライト。
+                spriteRenderer.sprite = spriteUp;
+            }
+
+        }
+        
     }
 }
