@@ -17,7 +17,7 @@ public class enemy1 : MonoBehaviour
 
     
 
-    public float speed = 3; //1秒間に進む距離
+    public float speed = 20; //1秒間に進む距離
     //物理更新時に処理
     private void FixedUpdate()
     {

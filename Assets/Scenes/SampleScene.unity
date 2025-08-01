@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  speed: 40
+  speed: 30
   cycleCount: 2
   curveLength: 3
 --- !u!95 &1124050097
@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  speed: 10
+  speed: 20
   cycleCount: 1
   curveLength: 2
 --- !u!114 &1703338787
@@ -894,7 +894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e6dbe560bad7b409f5eb97e289176b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 40
 --- !u!95 &2065063049
 Animator:
   serializedVersion: 5
