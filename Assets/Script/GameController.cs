@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    //オーディオソース一覧
+    public List<AudioSource> audioSrcList = new List<AudioSource>();
+
     public GameObject hitEffectPrefab;              // 命中エフェクトプレハブ
     public int MAX_HIT_EFFECT = 100;                // 命中エフェクト最大数
     List<GameObject> hitEffects;                    // 命中エフェクト一覧
@@ -15,6 +18,8 @@ public class GameController : MonoBehaviour
     int explosionIndex = 0;                         // 次に使う爆発エフェクトの位置
     void Start()
     {
+        // オーディオソースを取得
+        audioSrcList.AddRange(GetComponentsInChildren<AudioSource>());
         // カメラの後ろ位置
         Vector3 hidePos = Camera.main.transform.position - Camera.main.transform.forward;
 
@@ -65,5 +70,17 @@ public class GameController : MonoBehaviour
         }
     }
 
+    //効果音再生。
+    public void playSE(string clipName)
+    {
+        //オーディオクリップ一覧から指定されたと一致するオーディオクリップを取得。
+        AudioSource audioSrc = audioSrcList.Find(item => item.clip.name == clipName);
+        //オーディオクリップが見つかった場合。
+        if (audioSrc != null)
+        {
+            //オーディオソースを再生。
+            audioSrc.Play();
+        }
+    }
 
 }
