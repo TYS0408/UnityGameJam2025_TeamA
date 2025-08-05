@@ -22,6 +22,12 @@ public class PlayerHit : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        //ƒ^ƒO‚ª“¯‚¶ê‡‚ÍÕ“Ë‚³‚¹‚È‚¢B
+        if(tag == collider.gameObject.tag)
+        {
+            return;
+        }
+
         //‘Ì—Í‚ğŒ¸‚ç‚·
         HP--;
         //‘Ì—Í‚ª‚È‚­‚È‚Á‚½
