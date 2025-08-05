@@ -33,9 +33,7 @@ public class EnemyHit : MonoBehaviour
         if(HP <= 0)
         {
             //爆発エフェクト再生
-            gameController.playEffect("explosion", gameObject.transform.position); 
-            //エフェクト削除
-
+            gameController.playEffect("explosion", gameObject.transform.position);            
             //自分を削除
             Destroy(gameObject);
         }

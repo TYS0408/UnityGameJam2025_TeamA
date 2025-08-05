@@ -32,5 +32,12 @@ public class EnemyHit3 : MonoBehaviour
             //自分を削除
             Destroy(gameObject);
         }
+
+        //体力が残っている場合
+        else
+        {
+            //命中エフェクト再生
+            gameController.playEffect("hit", gameObject.transform.position);
+        }
     }
 }
