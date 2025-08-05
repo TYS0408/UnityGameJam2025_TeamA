@@ -42,9 +42,7 @@ public class EnemyHit3 : MonoBehaviour
         {
             //命中音再生。
             gameController.PlaySE("hit");
-            //命中エフェクト再生
-            gameController.playEffect("hit", gameObject.transform.position);
-            
+           
         }
 
     }

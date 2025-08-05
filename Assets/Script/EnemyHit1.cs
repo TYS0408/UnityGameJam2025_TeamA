@@ -28,8 +28,6 @@ public class EnemyHit : MonoBehaviour
         {
             //爆発音再生。
             gameController.PlaySE("explosion");
-            //爆発エフェクト再生
-            gameController.playEffect("explosion", gameObject.transform.position);
             
             //エフェクト削除
 
