@@ -20,6 +20,6 @@ public class TitleController : MonoBehaviour
 
     public void OnClickStartButton()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("SampleScene");
     }
 }
