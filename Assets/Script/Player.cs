@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    GameController gameController; //ゲーム管理オブジェクト
     //プレイヤーのアニメーション。
     public Sprite spriteNomal;  //プレイヤーの通常スプライト
     public Sprite spriteDown;   //プレイヤーの下降スプライト
@@ -41,6 +42,11 @@ public class Player : MonoBehaviour
             Rigidbody rb = shotList[i].GetComponent<Rigidbody>();
             rb.velocity = transform.right * shotSpeed;
         }
+
+        //ゲーム管理オブジェクトを取得。
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("GameController");
+        gameController = gameObjects[0].GetComponent<GameController>();
+
     }
 
     // Update is called once per frame
@@ -108,6 +114,8 @@ public class Player : MonoBehaviour
             {
                 nextShotIndex = 0;
             }
+            //発射音再生。
+            gameController.playSE("shot 1");
 
             //弾のフラッシュエフェクトを生成。
             shotFlash.SetActive(true);

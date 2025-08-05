@@ -27,6 +27,8 @@ public class EnemyHit2 : MonoBehaviour
         //体力がなくなったとき
         if( HP <= 0)
         {
+            //爆発音再生
+            gameController.playSE("explosion");
             //爆発エフェクト再生
             gameController.playEffect("explosion", gameObject.transform.position);
             //自分を削除
@@ -36,6 +38,8 @@ public class EnemyHit2 : MonoBehaviour
         //体力が残っている場合
         else
         {
+            //命中音再生
+            gameController.playSE("hit");
             //命中エフェクト再生
             gameController.playEffect("hit", gameObject.transform.position);
         }
