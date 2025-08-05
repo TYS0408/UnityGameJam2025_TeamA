@@ -36,7 +36,13 @@ public class Player : MonoBehaviour
             //プレハブから球を生成。
             shotList.Add(Instantiate(shotPrefab));
             shotList[i].transform.position = hidePos;
+
+            //リジッドボディの加速度を指定。
+            Rigidbody rb = shotList[i].GetComponent<Rigidbody>();
+            rb.velocity = transform.right * shotSpeed;
         }
+
+       
 
     }
 
@@ -114,13 +120,5 @@ public class Player : MonoBehaviour
             //発射効果の継続期間が過ぎたら発射効果を非表示。
             shotFlash.SetActive(false);
         }
-
-       
-        //弾移動。
-        for(int i = 0; i < maxShotCount; i++)
-        {
-            shotList[i].transform.position += transform.right * shotSpeed * Time.fixedDeltaTime;
-        }
-
     }
 }
