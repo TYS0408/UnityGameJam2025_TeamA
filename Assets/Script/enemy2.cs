@@ -12,7 +12,7 @@ public class enemy2 : MonoBehaviour
     }
 
     public ENEMY_TYPE type = ENEMY_TYPE.CURVE;
-    public float speed = 30;//1秒間に進む距離
+    public float speed = 15;//1秒間に進む距離
     public float cycleCount = 2;//1秒間に往復する回数
     public float curveLength = 3;　//カーブの最大距離
      float cycleRadian =0;　//Mathf.sin()に渡す角度(ラジアン).
