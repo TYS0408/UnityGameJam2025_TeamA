@@ -5,6 +5,27 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private int hp = 1;
+
+    public int GetHP()
+    {
+        return hp;
+    }
+
+    public void Damage(int amount)
+    {
+        hp -= amount;
+        if (hp < 0) hp = 0;
+    }
+    //敵に当たったらダメージ
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Enemy"))
+        {
+            Damage(1);
+        }
+    }
+
     GameController gameController; //ゲーム管理オブジェクト
     //プレイヤーのアニメーション。
     public Sprite spriteNomal;  //プレイヤーの通常スプライト
